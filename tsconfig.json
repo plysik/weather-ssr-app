@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "sourceMap": true,
     "target": "ESNext",
     "module": "CommonJS",
     "lib": ["DOM", "ESNext"],
@@ -10,8 +11,14 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./",
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "typeRoots": ["src/common/typings", "node_modules/@types"],
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@/*":           ["src/*"],
+      "@/lib/*":       ["src/components/lib/*"]
+    }
   },
-  "include": ["client", "server", "shared"],
-  "exclude": ["dist","public"]
+  "include": ["src/**/*", "webpack.client.ts", "webpack.server.ts"],
+  "exclude": ["dist", "public", "tailwind.config.js", "node_modules", "src/common/typings","postcss.config.js"]
 }

@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "formatter": {
+    "indentSize": 2,
+    "lineWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "lint": {
+    "rules": {
+      "biome/require-jsdoc": "off",
+      "biome/no-explicit-any": "warn"
+    }
+  },
+  "plugins": [
+    "@biomejs/plugin-react",
+    "@biomejs/plugin-typescript"
+  ],
+  "exclude": ["node_modules", "build", "public"]
+}
