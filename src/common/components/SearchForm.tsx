@@ -6,7 +6,10 @@ import { Search } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const SearchForm: React.FC = () => {
+interface SearchFormProps {
+	onSearch?: (city: string) => void;
+}
+const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 	const navigate = useNavigate();
 	const { city: paramCity } = useParams<{ city: string }>();
 
@@ -25,7 +28,11 @@ const SearchForm: React.FC = () => {
 		e.preventDefault();
 		const name = city.trim();
 		if (!name) return;
-		navigate(`/${encodeURIComponent(name)}`);
+		if (onSearch) {
+			onSearch(name);
+		} else {
+			navigate(`/${encodeURIComponent(name)}`);
+		}
 	};
 
 	return (

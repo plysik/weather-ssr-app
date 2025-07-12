@@ -3,12 +3,13 @@ import { Container } from "@components/ui/container";
 import { Separator } from "@components/ui/separator";
 // biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import SearchForm from "./components/SearchForm";
 import CityPage from "./pages/CityPage";
 import HomePage from "./pages/HomePage";
 
 const App: React.FC = () => {
+	const navigate = useNavigate();
 	return (
 		<div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-100 via-white to-blue-50">
 			<header className="bg-white shadow-sm">
@@ -17,11 +18,20 @@ const App: React.FC = () => {
 						to="/"
 						className="text-2xl font-bold text-indigo-600 hover:text-indigo-800"
 					>
-						WeatherSSR
+						Pogodynka
 					</Link>
 					<div className="w-1/3 hidden sm:block">
 						<Routes>
-							<Route path="/:city" element={<SearchForm />} />
+							<Route
+								path="/:city"
+								element={
+									<SearchForm
+										onSearch={(name) => {
+											navigate(`/${encodeURIComponent(name)}`);
+										}}
+									/>
+								}
+							/>
 						</Routes>
 					</div>
 				</Container>

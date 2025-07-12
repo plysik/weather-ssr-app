@@ -3,3 +3,5 @@ build
 .env
 .vscode
 .DS_Store
+public/bundle.js
+public/bundle.js.map

@@ -42,7 +42,6 @@ const CityPage: React.FC = () => {
 				current: OpenWeatherResponse;
 				comparison: Partial<OpenWeatherResponse>[];
 			} = (window as any).__INITIAL_DATA__;
-			console.log("SSR initial data:", init);
 			if (init?.current && init?.comparison) {
 				const parsedCurrent = parseOpenWeatherToWeatherData(init.current);
 				const parsedComparison = init.comparison.map((c) =>

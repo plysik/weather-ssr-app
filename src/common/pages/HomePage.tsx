@@ -21,7 +21,11 @@ const HomePage: React.FC = () => {
 						największymi metropoliami.
 					</p>
 					<div className="max-w-lg mx-auto">
-						<SearchForm />
+						<SearchForm
+							onSearch={(name) => {
+								window.location.href = `/${encodeURIComponent(name)}`;
+							}}
+						/>
 					</div>
 				</div>
 			</header>

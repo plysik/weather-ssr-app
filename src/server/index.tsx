@@ -91,10 +91,9 @@ const ssrHandler: RequestHandler = async (req, res, next) => {
 			initialData = { current, comparison };
 		}
 
-		const title =
-			initialData && initialData.current
-				? `WeatherSSR – Pogoda dla ${initialData.current.name}`
-				: "WeatherSSR";
+		const title = initialData?.current
+			? `Pogodynka – Pogoda dla ${initialData.current.name}`
+			: "Pogodynka";
 
 		const appHtml = renderToString(
 			<StaticRouter location={req.url}>
