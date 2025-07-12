@@ -13,13 +13,10 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 	const navigate = useNavigate();
 	const { city: paramCity } = useParams<{ city: string }>();
 
-	// Decode city param for display, or empty string on home page
 	const decodedParam = paramCity ? decodeURIComponent(paramCity) : "";
 
-	// Local state: initialize from URL param if present
 	const [city, setCity] = useState<string>(decodedParam);
 
-	// Whenever the URL param changes, update the input value
 	useEffect(() => {
 		setCity(decodedParam);
 	}, [decodedParam]);

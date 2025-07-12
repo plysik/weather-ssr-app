@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import App from "@/common/App";
 
 import "@/styles/global.css";
-import { parse } from "path";
 import { parseOpenWeatherToWeatherData } from "@/shared/utils";
 import { makeStore } from "@/store";
 

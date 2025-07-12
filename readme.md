@@ -24,7 +24,7 @@ A Server-Side Rendered (SSR) React + Express application for checking current an
 
 1. **Clone repo**  
    ```bash
-   git clone https://github.com/YourUser/weather-ssr-app.git
+   git clone https://github.com/plysik/weather-ssr-app.git
    cd weather-ssr-app
     ````
 
@@ -163,13 +163,11 @@ A Server-Side Rendered (SSR) React + Express application for checking current an
 
 Create a `.env` file in project root:
 
-```ini
+```init
 API_KEY=your_openweathermap_key
-OPEN_WEATHER_API_URL=https://api.openweathermap.org/data/2.5/weather
 ```
 
-* `API_KEY` – your OpenWeatherMap API key
-* `OPEN_WEATHER_API_URL` – base URL for current weather (default above)
+* `API_KEY` – your OpenWeatherMap API key - get it from here: https://home.openweathermap.org/api_keys
 
 ---
 

@@ -52,7 +52,6 @@ const CityPage: React.FC = () => {
 
 	return (
 		<div className="space-y-8 p-4">
-			{/* Current Weather */}
 			<Card className="max-w-4xl mx-auto">
 				<CardHeader>
 					<h2 className="text-2xl font-semibold mt-2">
@@ -139,7 +138,6 @@ const CityPage: React.FC = () => {
 					</div>
 				</CardContent>
 			</Card>
-			{/* Comparison Table */}
 			<Card className="max-w-5xl mx-auto">
 				<CardHeader>
 					<h3 className="text-xl font-medium">

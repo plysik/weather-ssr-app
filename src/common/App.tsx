@@ -32,6 +32,7 @@ const App: React.FC = () => {
 									/>
 								}
 							/>
+							<Route path="/" element={null} />
 						</Routes>
 					</div>
 				</Container>
