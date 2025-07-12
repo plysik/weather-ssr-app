@@ -10,21 +10,9 @@ import { Droplet, Gauge, Thermometer, Wind } from "lucide-react";
 // biome-ignore lint/style/useImportType: <explanation>
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { parseOpenWeatherToWeatherData } from "@/shared/utils";
 import { fetchWeatherData } from "../../api/fetchWeather";
 import type { OpenWeatherResponse, WeatherData } from "../../typings/weather";
-
-function parseOpenWeatherToWeatherData(data: OpenWeatherResponse): WeatherData {
-	return {
-		name: data.name,
-		temp: data.main.temp,
-		feels_like: data.main.feels_like,
-		humidity: data.main.humidity,
-		pressure: data.main.pressure,
-		wind_speed: data.wind.speed,
-		description: data.weather[0]?.description ?? "",
-		icon: data.weather[0]?.icon ?? "",
-	};
-}
 
 const CityPage: React.FC = () => {
 	const { city } = useParams<{ city: string }>();

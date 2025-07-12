@@ -1,34 +1,15 @@
+import path from "node:path";
 import dotenv from "dotenv";
 import express, { type RequestHandler } from "express";
-import path from "path";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
+import { buildWeatherUrl } from "@/server/utils";
 import App from "../common/App";
 
 dotenv.config();
 const app = express();
 const PORT = parseInt(process.env.PORT || "3000", 10);
-
-// Base URL and API key for OpenWeatherMap
-const OPEN_WEATHER_BASE_URL =
-	process.env.OPEN_WEATHER_API_URL ||
-	"https://api.openweathermap.org/data/2.5/weather";
-const API_KEY = process.env.API_KEY!;
-
-/**
- * Builds the full OpenWeatherMap request URL for a given city,
- * including metric units and Polish language.
- */
-function buildWeatherUrl(city: string): string {
-	const params = new URLSearchParams({
-		q: city,
-		appid: API_KEY,
-		units: "metric",
-		lang: "pl",
-	});
-	return `${OPEN_WEATHER_BASE_URL}?${params.toString()}`;
-}
 
 // 1) Serve static assets
 app.use(express.static(path.resolve(__dirname, "..", "public")));
