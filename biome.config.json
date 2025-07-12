@@ -10,7 +10,8 @@
   "lint": {
     "rules": {
       "biome/require-jsdoc": "off",
-      "biome/no-explicit-any": "warn"
+      "biome/no-explicit-any": "warn",
+      "biome/use-import-type": "off"
     }
   },
   "plugins": [

@@ -48896,13 +48896,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/.pnpm/react@19.1.0/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/.pnpm/react-router@6.30.1_react@19.1.0/node_modules/react-router/dist/index.js");
+/* harmony import */ var _components_ui_button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/ui/button */ "./src/components/ui/button.tsx");
 /* harmony import */ var _components_ui_input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @components/ui/input */ "./src/components/ui/input.tsx");
-/* harmony import */ var _components_ui_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @components/ui/button */ "./src/components/ui/button.tsx");
+/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! clsx */ "./node_modules/.pnpm/clsx@2.1.1/node_modules/clsx/dist/clsx.mjs");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lucide-react */ "./node_modules/.pnpm/lucide-react@0.525.0_react@19.1.0/node_modules/lucide-react/dist/esm/icons/search.js");
-/* harmony import */ var clsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! clsx */ "./node_modules/.pnpm/clsx@2.1.1/node_modules/clsx/dist/clsx.mjs");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/.pnpm/react@19.1.0/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/.pnpm/react-router@6.30.1_react@19.1.0/node_modules/react-router/dist/index.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -48913,6 +48913,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+// biome-ignore lint/style/useImportType: <explanation>
 
 
 var SearchForm = function SearchForm(_ref) {
@@ -48922,16 +48923,16 @@ var SearchForm = function SearchForm(_ref) {
     paramCity = _useParams.city;
 
   // Decode city param for display, or empty string on home page
-  var decodedParam = paramCity ? decodeURIComponent(paramCity) : '';
+  var decodedParam = paramCity ? decodeURIComponent(paramCity) : "";
 
   // Local state: initialize from URL param if present
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(decodedParam),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(decodedParam),
     _useState2 = _slicedToArray(_useState, 2),
     city = _useState2[0],
     setCity = _useState2[1];
 
   // Whenever the URL param changes, update the input value
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
     setCity(decodedParam);
   }, [decodedParam]);
   var onSubmit = function onSubmit(e) {
@@ -48940,22 +48941,22 @@ var SearchForm = function SearchForm(_ref) {
     if (!name) return;
     navigate("/".concat(encodeURIComponent(name)));
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("form", {
     onSubmit: onSubmit,
     className: "flex w-full max-w-md mx-auto p-4 space-x-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement("div", {
     className: "relative flex-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
     className: "absolute left-3 top-1/2 -translate-y-1/2 text-gray-400",
     size: 20
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_input__WEBPACK_IMPORTED_MODULE_1__.Input, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_components_ui_input__WEBPACK_IMPORTED_MODULE_1__.Input, {
     value: city,
     onChange: function onChange(e) {
       return setCity(e.target.value);
     },
     placeholder: "Wpisz miasto",
-    className: (0,clsx__WEBPACK_IMPORTED_MODULE_3__["default"])('pl-10 w-full', className)
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_button__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    className: (0,clsx__WEBPACK_IMPORTED_MODULE_2__["default"])("pl-10 w-full", className)
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(_components_ui_button__WEBPACK_IMPORTED_MODULE_0__.Button, {
     type: "submit",
     className: "whitespace-nowrap"
   }, "Szukaj"));
@@ -48974,15 +48975,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/.pnpm/react@19.1.0/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/.pnpm/react-router@6.30.1_react@19.1.0/node_modules/react-router/dist/index.js");
-/* harmony import */ var _components_ui_card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @components/ui/card */ "./src/components/ui/card.tsx");
-/* harmony import */ var _components_ui_table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @components/ui/table */ "./src/components/ui/table.tsx");
+/* harmony import */ var _components_ui_card__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/ui/card */ "./src/components/ui/card.tsx");
+/* harmony import */ var _components_ui_table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @components/ui/table */ "./src/components/ui/table.tsx");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lucide-react */ "./node_modules/.pnpm/lucide-react@0.525.0_react@19.1.0/node_modules/lucide-react/dist/esm/icons/thermometer.js");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lucide-react */ "./node_modules/.pnpm/lucide-react@0.525.0_react@19.1.0/node_modules/lucide-react/dist/esm/icons/droplet.js");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lucide-react */ "./node_modules/.pnpm/lucide-react@0.525.0_react@19.1.0/node_modules/lucide-react/dist/esm/icons/gauge.js");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! lucide-react */ "./node_modules/.pnpm/lucide-react@0.525.0_react@19.1.0/node_modules/lucide-react/dist/esm/icons/wind.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/.pnpm/react@19.1.0/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/.pnpm/react-router@6.30.1_react@19.1.0/node_modules/react-router/dist/index.js");
 /* harmony import */ var _api_fetchWeather__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/fetchWeather */ "./src/api/fetchWeather.ts");
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { if (r) i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n;else { var o = function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); }; o("next", 0), o("throw", 1), o("return", 2); } }, _regeneratorDefine2(e, r, n, t); }
@@ -48997,31 +48998,32 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
+// biome-ignore lint/style/useImportType: <explanation>
 
 
 
-var popularCities = ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'];
 var CityPage = function CityPage() {
+  var _current$temp;
   var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)(),
     city = _useParams.city;
-  var decodedCity = city ? decodeURIComponent(city) : '';
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var decodedCity = city ? decodeURIComponent(city) : "";
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
     current = _useState2[0],
     setCurrent = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
     _useState4 = _slicedToArray(_useState3, 2),
     comparison = _useState4[0],
     setComparison = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(true),
     _useState6 = _slicedToArray(_useState5, 2),
     loading = _useState6[0],
     setLoading = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
     _useState8 = _slicedToArray(_useState7, 2),
     error = _useState8[0],
     setError = _useState8[1];
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
       var init, _yield$fetchWeatherDa, curr, comp, _t;
       return _regenerator().w(function (_context) {
@@ -49029,6 +49031,7 @@ var CityPage = function CityPage() {
           case 0:
             // 1) sprawdź SSR-injected data
             init = window.__INITIAL_DATA__;
+            console.log("SSR initial data:", init);
             if (!(init && init.current && init.comparison)) {
               _context.n = 1;
               break;
@@ -49040,7 +49043,7 @@ var CityPage = function CityPage() {
             return _context.a(2);
           case 1:
             setLoading(true);
-            setError('');
+            setError("");
             _context.p = 2;
             _context.n = 3;
             return (0,_api_fetchWeather__WEBPACK_IMPORTED_MODULE_3__.fetchWeatherData)(decodedCity);
@@ -49067,12 +49070,12 @@ var CityPage = function CityPage() {
     }))();
   }, [decodedCity]);
   if (loading) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
       className: "flex justify-center items-center h-64"
     }, "Loading weather data\u2026");
   }
   if (error) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
       className: "text-center text-red-600"
     }, "Error: ", error);
   }
@@ -49080,74 +49083,74 @@ var CityPage = function CityPage() {
     return null;
   }
   var iconUrl = "https://openweathermap.org/img/wn/".concat(current.icon, "@2x.png");
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "space-y-8 p-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.Card, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_0__.Card, {
     className: "max-w-4xl mx-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardHeader, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_0__.CardHeader, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h2", {
     className: "text-2xl font-semibold mt-2"
-  }, "Weather in ", current.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Weather in ", current.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "flex items-center space-x-3 mt-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("img", {
     src: iconUrl,
     alt: current.description,
     className: "w-12 h-12"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-sm text-gray-500"
-  }, current.description))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardContent, {
+  }, current.description))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_0__.CardContent, {
     className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "flex items-center space-x-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
     size: 28
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-lg font-medium"
-  }, current.temp.toFixed(1), " \xB0C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }, (_current$temp = current.temp) === null || _current$temp === void 0 ? void 0 : _current$temp.toFixed(1), " \xB0C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-sm text-gray-500"
-  }, "Temperature"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Temperature"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "flex items-center space-x-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_5__["default"], {
     size: 28,
     className: "rotate-180"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-lg font-medium"
-  }, current.feels_like.toFixed(1), " \xB0C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }, current.feels_like.toFixed(1), " \xB0C"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-sm text-gray-500"
-  }, "Feels Like"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Feels Like"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "flex items-center space-x-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_6__["default"], {
     size: 28
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-lg font-medium"
-  }, current.humidity, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }, current.humidity, "%"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-sm text-gray-500"
-  }, "Humidity"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Humidity"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "flex items-center space-x-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_7__["default"], {
     size: 28
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-lg font-medium"
-  }, current.pressure, " hPa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }, current.pressure, " hPa"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-sm text-gray-500"
-  }, "Pressure"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Pressure"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "flex items-center space-x-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_8__["default"], {
     size: 28
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-lg font-medium"
-  }, current.wind_speed.toFixed(1), " m/s"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }, current.wind_speed.toFixed(1), " m/s"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "text-sm text-gray-500"
-  }, "Wind Speed"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.Card, {
+  }, "Wind Speed"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_0__.Card, {
     className: "max-w-5xl mx-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardHeader, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_0__.CardHeader, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h3", {
     className: "text-xl font-medium"
-  }, "Comparison with Popular Cities")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardContent, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.Table, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableHeader, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableRow, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableCell, null, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableCell, null, "Temp (\xB0C)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableCell, null, "Humidity (%)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableCell, null, "Wind (m/s)"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableBody, null, comparison.map(function (c) {
+  }, "Comparison with Popular Cities")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_0__.CardContent, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.Table, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableHeader, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableRow, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableCell, null, "City"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableCell, null, "Temp (\xB0C)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableCell, null, "Humidity (%)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableCell, null, "Wind (m/s)"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableBody, null, comparison.map(function (c) {
     var dTemp = c.temp - current.temp;
     var dHum = c.humidity - current.humidity;
     var dWind = c.wind_speed - current.wind_speed;
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableRow, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableRow, {
       key: c.name
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableCell, null, c.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableCell, null, c.temp.toFixed(1), " (", dTemp > 0 ? "+".concat(dTemp.toFixed(1)) : dTemp.toFixed(1), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableCell, null, c.humidity, " (", dHum > 0 ? "+".concat(dHum) : dHum, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_2__.TableCell, null, c.wind_speed.toFixed(1), " (", dWind > 0 ? "+".concat(dWind.toFixed(1)) : dWind.toFixed(1), ")"));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableCell, null, c.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableCell, null, c.temp.toFixed(1), " (", dTemp > 0 ? "+".concat(dTemp.toFixed(1)) : dTemp.toFixed(1), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableCell, null, c.humidity, " (", dHum > 0 ? "+".concat(dHum) : dHum, ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_table__WEBPACK_IMPORTED_MODULE_1__.TableCell, null, c.wind_speed.toFixed(1), " (", dWind > 0 ? "+".concat(dWind.toFixed(1)) : dWind.toFixed(1), ")"));
   }))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CityPage);
@@ -49164,55 +49167,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/.pnpm/react@19.1.0/node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/.pnpm/react-router-dom@6.30.1_react-dom@19.1.0_react@19.1.0__react@19.1.0/node_modules/react-router-dom/dist/index.js");
-/* harmony import */ var _components_SearchForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/SearchForm */ "./src/common/components/SearchForm.tsx");
-/* harmony import */ var _components_ui_card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @components/ui/card */ "./src/components/ui/card.tsx");
-/* harmony import */ var _components_ui_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @components/ui/button */ "./src/components/ui/button.tsx");
+/* harmony import */ var _components_ui_button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/ui/button */ "./src/components/ui/button.tsx");
+/* harmony import */ var _components_ui_card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @components/ui/card */ "./src/components/ui/card.tsx");
 /* harmony import */ var lucide_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lucide-react */ "./node_modules/.pnpm/lucide-react@0.525.0_react@19.1.0/node_modules/lucide-react/dist/esm/icons/map-pin.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/.pnpm/react@19.1.0/node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/.pnpm/react-router-dom@6.30.1_react-dom@19.1.0_react@19.1.0__react@19.1.0/node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var _components_SearchForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SearchForm */ "./src/common/components/SearchForm.tsx");
 
 
 
+// biome-ignore lint/style/useImportType: <explanation>
 
 
 
-var popularCities = ['Warszawa', 'Kraków', 'Gdańsk', 'Wrocław'];
+var popularCities = ["Warszawa", "Kraków", "Gdańsk", "Wrocław"];
 var HomePage = function HomePage() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "min-h-screen flex flex-col"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("header", {
     className: "bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "container mx-auto text-center"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h1", {
     className: "text-4xl font-extrabold mb-4"
-  }, "Sprawd\u017A pogod\u0119 w swojej okolicy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+  }, "Sprawd\u017A pogod\u0119 w swojej okolicy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("p", {
     className: "mb-8 text-lg opacity-90"
-  }, "Aktualna i przysz\u0142a prognoza dla wybranego miasta, plus por\xF3wnanie z najwi\u0119kszymi metropoliami."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Aktualna i przysz\u0142a prognoza dla wybranego miasta, plus por\xF3wnanie z najwi\u0119kszymi metropoliami."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "max-w-lg mx-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_SearchForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_SearchForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "bg-white bg-opacity-60 backdrop-blur-sm"
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("section", {
     className: "flex-1 bg-gray-50 py-12"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "container mx-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("h2", {
     className: "text-2xl font-semibold text-center mb-6"
-  }, "Popularne miasta"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "Popularne miasta"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement("div", {
     className: "grid grid-cols-2 sm:grid-cols-4 gap-4"
   }, popularCities.map(function (city) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_2__.Card, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.Card, {
       key: city,
       className: "hover:shadow-lg transition-shadow hover:cursor-pointer"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_2__.CardContent, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_card__WEBPACK_IMPORTED_MODULE_1__.CardContent, {
       className: "flex flex-col items-center p-6"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(lucide_react__WEBPACK_IMPORTED_MODULE_4__["default"], {
       size: 32,
       className: "text-indigo-500 mb-2"
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
       to: "/".concat(encodeURIComponent(city))
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ui_button__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_ui_button__WEBPACK_IMPORTED_MODULE_0__.Button, {
       variant: "outline",
       className: "w-full hover:cursor-pointer"
     }, city))));

@@ -118,7 +118,7 @@ const ssrHandler: RequestHandler = async (req, res, next) => {
 		next(err as any);
 	}
 };
-app.get(ssrHandler);
+app.use(ssrHandler);
 
 app.listen(PORT, () => {
 	console.log(`Server running at http://localhost:${PORT}`);
