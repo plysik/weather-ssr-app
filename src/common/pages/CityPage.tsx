@@ -6,57 +6,33 @@ import {
 	TableHeader,
 	TableRow,
 } from "@components/ui/table";
+import { format } from "date-fns";
+import pl from "date-fns/locale/pl";
 import { Droplet, Gauge, Thermometer, Wind } from "lucide-react";
 // biome-ignore lint/style/useImportType: <explanation>
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { parseOpenWeatherToWeatherData } from "@/shared/utils";
-import { fetchWeatherData } from "../../api/fetchWeather";
-import type { OpenWeatherResponse, WeatherData } from "../../typings/weather";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { fetchForecast, fetchWeather } from "@/store/weatherSlice";
 
 const CityPage: React.FC = () => {
-	const { city } = useParams<{ city: string }>();
-	const decodedCity = city ? decodeURIComponent(city) : "";
-
-	const [current, setCurrent] = useState<WeatherData | null>(null);
-	const [comparison, setComparison] = useState<WeatherData[]>([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState<string>("");
+	const dispatch = useAppDispatch();
+	const { current, comparison, forecast, status, error } = useAppSelector(
+		(s) => {
+			return s.weather;
+		},
+	);
+	const { city: paramCity } = useParams<{ city: string }>();
+	const city = paramCity ? decodeURIComponent(paramCity) : "";
 
 	useEffect(() => {
-		(async () => {
-			// 1) sprawdź SSR-injected data
-			const init: {
-				current: OpenWeatherResponse;
-				comparison: Partial<OpenWeatherResponse>[];
-			} = (window as any).__INITIAL_DATA__;
-			if (init?.current && init?.comparison) {
-				const parsedCurrent = parseOpenWeatherToWeatherData(init.current);
-				const parsedComparison = init.comparison.map((c) =>
-					parseOpenWeatherToWeatherData(c as OpenWeatherResponse),
-				);
-				setCurrent(parsedCurrent);
-				setComparison(parsedComparison);
-				setLoading(false);
-				delete (window as any).__INITIAL_DATA__;
-				return;
-			}
-			setLoading(true);
-			setError("");
-			try {
-				const { current: curr, comparison: comp } =
-					await fetchWeatherData(decodedCity);
-				setCurrent(curr);
-				setComparison(comp as WeatherData[]);
-			} catch (err: any) {
-				setError(err.message);
-			} finally {
-				setLoading(false);
-			}
-		})();
-	}, [decodedCity]);
+		if (city) {
+			dispatch(fetchWeather(city));
+			dispatch(fetchForecast(city));
+		}
+	}, [city, dispatch]);
 
-	if (loading) {
+	if (status === "loading") {
 		return (
 			<div className="flex justify-center items-center h-64">
 				Wczytywanie danych...
@@ -135,7 +111,34 @@ const CityPage: React.FC = () => {
 					</div>
 				</CardContent>
 			</Card>
-
+			<Card className="max-w-5xl mx-auto overflow-x-auto">
+				<CardHeader>
+					<h3 className="text-xl font-medium">5-dniowa prognoza</h3>
+				</CardHeader>
+				<CardContent>
+					<div className="flex space-x-4 pb-4">
+						{forecast.map(({ dt, main, weather }) => (
+							<div
+								key={dt}
+								className="flex-shrink-0 w-24 text-center bg-white bg-opacity-80 rounded p-2"
+							>
+								<p className="text-sm text-gray-500">
+									{format(new Date(dt * 1000), "EEE", { locale: pl })}
+								</p>
+								<img
+									src={`https://openweathermap.org/img/wn/${weather[0].icon}.png`}
+									alt={weather[0].description}
+									className="mx-auto"
+								/>
+								<p className="font-semibold">{Math.round(main.temp)}°C</p>
+								<p className="text-xs text-gray-500">
+									{Math.round(main.temp_min)}° / {Math.round(main.temp_max)}°
+								</p>
+							</div>
+						))}
+					</div>
+				</CardContent>
+			</Card>
 			{/* Comparison Table */}
 			<Card className="max-w-5xl mx-auto">
 				<CardHeader>

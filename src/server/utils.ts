@@ -16,3 +16,15 @@ export function buildWeatherUrl(city: string): string {
 	});
 	return `${OPEN_WEATHER_BASE_URL}?${params.toString()}`;
 }
+
+export function buildForecastUrl(lat: number, lon: number): string {
+	const params = new URLSearchParams({
+		appid: API_KEY,
+		lat: lat.toString(),
+		lon: lon.toString(),
+		units: "metric",
+		lang: "pl",
+		cnt: "5",
+	});
+	return `https://api.openweathermap.org/data/2.5/forecast?${params.toString()}`;
+}

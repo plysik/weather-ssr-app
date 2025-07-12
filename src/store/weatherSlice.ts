@@ -22,11 +22,31 @@ export const fetchWeather = createAsyncThunk(
 	},
 );
 
+export const fetchForecast = createAsyncThunk(
+	"weather/fetchForecast",
+	async (city: string) => {
+		const resp = await fetch(
+			`/api/weather/forecast/${encodeURIComponent(city)}`,
+		);
+		if (!resp.ok) throw new Error(resp.statusText);
+		return (await resp.json()) as {
+			dt: number;
+			temp: { day: number; min: number; max: number };
+			weather: { description: string; icon: string }[];
+		}[];
+	},
+);
+
 interface WeatherState {
 	current: WeatherData | null;
 	comparison: WeatherData[];
 	status: "idle" | "loading" | "failed";
 	error: string | null;
+	forecast: {
+		dt: number;
+		temp: { day: number; min: number; max: number };
+		weather: { description: string; icon: string }[];
+	}[];
 }
 
 const initialState: WeatherState = {
@@ -34,6 +54,7 @@ const initialState: WeatherState = {
 	comparison: [],
 	status: "idle",
 	error: null,
+	forecast: [],
 };
 
 const slice = createSlice({
@@ -45,6 +66,7 @@ const slice = createSlice({
 			state.comparison = [];
 			state.status = "idle";
 			state.error = null;
+			state.forecast = [];
 		},
 	},
 	extraReducers: (builder) => {
@@ -72,9 +94,17 @@ const slice = createSlice({
 					);
 				},
 			)
-			.addCase(fetchWeather.rejected, (state, action) => {
-				state.status = "failed";
-				state.error = action.error.message ?? "Unknown error";
+			.addCase(fetchForecast.pending, (state) => {
+				state.status = "loading";
+				state.error = null;
+			})
+			.addCase(fetchForecast.fulfilled, (state, action) => {
+				state.status = "idle";
+				state.error = null;
+				state.forecast = action.payload;
+			})
+			.addCase(fetchForecast.rejected, (state, action) => {
+				state.error = action.error.message || "Unknown error";
 			});
 	},
 });

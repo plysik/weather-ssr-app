@@ -23,6 +23,7 @@ const preloadedState = init
 				),
 				status: "idle",
 				error: null,
+				forecast: [],
 			},
 		}
 	: undefined;

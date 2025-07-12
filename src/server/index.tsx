@@ -3,18 +3,19 @@ import dotenv from "dotenv";
 import express, { type RequestHandler } from "express";
 import React from "react";
 import { renderToString } from "react-dom/server";
+import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom/server";
-import { buildWeatherUrl } from "@/server/utils";
-import App from "../common/App";
+import App from "@/common/App";
+import { parseOpenWeatherToWeatherData } from "@/shared/utils";
+import { makeStore } from "@/store";
+import { buildForecastUrl, buildWeatherUrl } from "./utils";
 
 dotenv.config();
 const app = express();
 const PORT = parseInt(process.env.PORT || "3000", 10);
 
-// 1) Serve static assets
 app.use(express.static(path.resolve(__dirname, "..", "public")));
 
-// 2.1) Comparison endpoint for popular cities
 app.get("/api/weather/comparison", async (_req: Request, res: Response) => {
 	const popular = ["Warszawa", "Kraków", "Gdańsk", "Wrocław"];
 	try {
@@ -31,7 +32,32 @@ app.get("/api/weather/comparison", async (_req: Request, res: Response) => {
 	}
 });
 
-// 2.2) Single-city weather endpoint
+app.get("/api/weather/forecast/:city", async (req, res) => {
+	try {
+		const city = req.params.city;
+		const basicResp = await fetch(buildWeatherUrl(city));
+		if (!basicResp.ok)
+			return res
+				.status(basicResp.status)
+				.json({ message: basicResp.statusText });
+		const basicJson = await basicResp.json();
+		const {
+			coord: { lat, lon },
+		} = basicJson;
+
+		const forecastResp = await fetch(buildForecastUrl(lat, lon));
+		if (!forecastResp.ok)
+			return res
+				.status(forecastResp.status)
+				.json({ message: forecastResp.statusText });
+		const { list } = await forecastResp.json();
+		res.json(list);
+	} catch (err: any) {
+		console.error("Error fetching forecast:", err);
+		res.status(500).json({ message: err.message });
+	}
+});
+
 app.get("/api/weather/:city", async (req: Request, res: Response) => {
 	const city = req.params.city;
 	try {
@@ -46,7 +72,6 @@ app.get("/api/weather/:city", async (req: Request, res: Response) => {
 	}
 });
 
-// 3) SSR fallback with dynamic <title> and injected initial data
 const ssrHandler: RequestHandler = async (req, res, next) => {
 	try {
 		let initialData: { current: any; comparison: any[] } | null = null;
@@ -71,15 +96,30 @@ const ssrHandler: RequestHandler = async (req, res, next) => {
 
 			initialData = { current, comparison };
 		}
-
+		const preloadedState = initialData
+			? {
+					weather: {
+						current: parseOpenWeatherToWeatherData(initialData.current),
+						comparison: initialData.comparison.map((d) =>
+							parseOpenWeatherToWeatherData(d as OpenWeatherResponse),
+						),
+						status: "idle",
+						error: null,
+						forecast: [],
+					},
+				}
+			: undefined;
+		const store = makeStore(preloadedState);
 		const title = initialData?.current
 			? `Pogodynka – Pogoda dla ${initialData.current.name}`
 			: "Pogodynka";
 
 		const appHtml = renderToString(
-			<StaticRouter location={req.url}>
-				<App />
-			</StaticRouter>,
+			<Provider store={store}>
+				<StaticRouter location={req.url}>
+					<App />
+				</StaticRouter>
+			</Provider>,
 		);
 
 		res.send(`<!DOCTYPE html>
