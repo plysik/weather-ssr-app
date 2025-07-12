@@ -13,6 +13,19 @@ import { useParams } from "react-router-dom";
 import { fetchWeatherData } from "../../api/fetchWeather";
 import type { OpenWeatherResponse, WeatherData } from "../../typings/weather";
 
+function parseOpenWeatherToWeatherData(data: OpenWeatherResponse): WeatherData {
+	return {
+		name: data.name,
+		temp: data.main.temp,
+		feels_like: data.main.feels_like,
+		humidity: data.main.humidity,
+		pressure: data.main.pressure,
+		wind_speed: data.wind.speed,
+		description: data.weather[0]?.description ?? "",
+		icon: data.weather[0]?.icon ?? "",
+	};
+}
+
 const CityPage: React.FC = () => {
 	const { city } = useParams<{ city: string }>();
 	const decodedCity = city ? decodeURIComponent(city) : "";
@@ -30,9 +43,13 @@ const CityPage: React.FC = () => {
 				comparison: Partial<OpenWeatherResponse>[];
 			} = (window as any).__INITIAL_DATA__;
 			console.log("SSR initial data:", init);
-			if (init && init.current && init.comparison) {
-				setCurrent(init.current);
-				setComparison(init.comparison);
+			if (init?.current && init?.comparison) {
+				const parsedCurrent = parseOpenWeatherToWeatherData(init.current);
+				const parsedComparison = init.comparison.map((c) =>
+					parseOpenWeatherToWeatherData(c as OpenWeatherResponse),
+				);
+				setCurrent(parsedCurrent);
+				setComparison(parsedComparison);
 				setLoading(false);
 				delete (window as any).__INITIAL_DATA__;
 				return;
@@ -55,7 +72,7 @@ const CityPage: React.FC = () => {
 	if (loading) {
 		return (
 			<div className="flex justify-center items-center h-64">
-				Loading weather data…
+				Wczytywanie danych...
 			</div>
 		);
 	}
@@ -76,7 +93,7 @@ const CityPage: React.FC = () => {
 			<Card className="max-w-4xl mx-auto">
 				<CardHeader>
 					<h2 className="text-2xl font-semibold mt-2">
-						Weather in {current.name}
+						Pogoda w {current.name}
 					</h2>
 					<div className="flex items-center space-x-3 mt-2">
 						<img
@@ -92,9 +109,9 @@ const CityPage: React.FC = () => {
 						<Thermometer size={28} />
 						<div>
 							<p className="text-lg font-medium">
-								{current.temp?.toFixed(1)} °C
+								{current.temp.toFixed(1)} °C
 							</p>
-							<p className="text-sm text-gray-500">Temperature</p>
+							<p className="text-sm text-gray-500">Temperatura</p>
 						</div>
 					</div>
 					<div className="flex items-center space-x-3">
@@ -103,21 +120,21 @@ const CityPage: React.FC = () => {
 							<p className="text-lg font-medium">
 								{current.feels_like.toFixed(1)} °C
 							</p>
-							<p className="text-sm text-gray-500">Feels Like</p>
+							<p className="text-sm text-gray-500">Odczuwalna</p>
 						</div>
 					</div>
 					<div className="flex items-center space-x-3">
 						<Droplet size={28} />
 						<div>
 							<p className="text-lg font-medium">{current.humidity}%</p>
-							<p className="text-sm text-gray-500">Humidity</p>
+							<p className="text-sm text-gray-500">Wilgotność</p>
 						</div>
 					</div>
 					<div className="flex items-center space-x-3">
 						<Gauge size={28} />
 						<div>
 							<p className="text-lg font-medium">{current.pressure} hPa</p>
-							<p className="text-sm text-gray-500">Pressure</p>
+							<p className="text-sm text-gray-500">Ciśnienie</p>
 						</div>
 					</div>
 					<div className="flex items-center space-x-3">
@@ -126,7 +143,7 @@ const CityPage: React.FC = () => {
 							<p className="text-lg font-medium">
 								{current.wind_speed.toFixed(1)} m/s
 							</p>
-							<p className="text-sm text-gray-500">Wind Speed</p>
+							<p className="text-sm text-gray-500">Wiatr</p>
 						</div>
 					</div>
 				</CardContent>
@@ -136,17 +153,17 @@ const CityPage: React.FC = () => {
 			<Card className="max-w-5xl mx-auto">
 				<CardHeader>
 					<h3 className="text-xl font-medium">
-						Comparison with Popular Cities
+						Porównanie z popularnymi miastami
 					</h3>
 				</CardHeader>
 				<CardContent>
 					<Table>
 						<TableHeader>
 							<TableRow>
-								<TableCell>City</TableCell>
-								<TableCell>Temp (°C)</TableCell>
-								<TableCell>Humidity (%)</TableCell>
-								<TableCell>Wind (m/s)</TableCell>
+								<TableCell>Miasto</TableCell>
+								<TableCell>Temperatur (°C)</TableCell>
+								<TableCell>Wilgotność (%)</TableCell>
+								<TableCell>Wiatr (m/s)</TableCell>
 							</TableRow>
 						</TableHeader>
 						<TableBody>

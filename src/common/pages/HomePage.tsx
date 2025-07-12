@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
 						największymi metropoliami.
 					</p>
 					<div className="max-w-lg mx-auto">
-						<SearchForm className="bg-white bg-opacity-60 backdrop-blur-sm" />
+						<SearchForm />
 					</div>
 				</div>
 			</header>

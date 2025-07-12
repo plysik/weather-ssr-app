@@ -6,10 +6,7 @@ import { Search } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-interface SearchFormProps {
-	className?: string;
-}
-const SearchForm: React.FC<SearchFormProps> = ({ className }) => {
+const SearchForm: React.FC = () => {
 	const navigate = useNavigate();
 	const { city: paramCity } = useParams<{ city: string }>();
 
@@ -38,17 +35,20 @@ const SearchForm: React.FC<SearchFormProps> = ({ className }) => {
 		>
 			<div className="relative flex-1">
 				<Search
-					className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+					className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-900 z-1"
 					size={20}
 				/>
 				<Input
 					value={city}
 					onChange={(e) => setCity(e.target.value)}
 					placeholder="Wpisz miasto"
-					className={cn("pl-10 w-full", className)}
+					className={cn("pl-10 w-full bg-white text-gray-900")}
 				/>
 			</div>
-			<Button type="submit" className="whitespace-nowrap">
+			<Button
+				type="submit"
+				className="whitespace-nowrap bg-indigo-900 hover:cursor-pointer"
+			>
 				Szukaj
 			</Button>
 		</form>
