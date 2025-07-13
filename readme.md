@@ -84,7 +84,6 @@ A Server-Side Rendered (SSR) React + Express application for checking current an
     "build:server": "webpack --config webpack.server.ts --mode production",
     "build":        "pnpm run build:client && pnpm run build:server",
     "start":        "node build/server.js",
-    "format":       "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "biome:check":  "biome check",
     "biome:fix":    "biome fix",
     "check:types":  "tsc --noEmit"

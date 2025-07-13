@@ -13,7 +13,6 @@
     "start": "node build/server.js",
     "biome:check": "biome check",
     "biome:fix": "biome fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "check:types": "tsc --noEmit"
   },
   "keywords": [],
