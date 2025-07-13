@@ -6,6 +6,7 @@ import { renderToString } from "react-dom/server";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom/server";
 import App from "@/common/App";
+import { popularCities } from "@/shared/data";
 import { parseOpenWeatherToWeatherData } from "@/shared/utils";
 import { makeStore } from "@/store";
 import { buildForecastUrl, buildWeatherUrl } from "./utils";
@@ -17,10 +18,9 @@ const PORT = parseInt(process.env.PORT || "3000", 10);
 app.use(express.static(path.resolve(__dirname, "..", "public")));
 
 app.get("/api/weather/comparison", async (_req: Request, res: Response) => {
-	const popular = ["Warszawa", "Kraków", "Gdańsk", "Wrocław"];
 	try {
 		const results = await Promise.all(
-			popular.map(async (city) => {
+			popularCities.map(async (city) => {
 				const resp = await fetch(buildWeatherUrl(city));
 				if (!resp.ok) throw new Error(`Error fetching ${city}`);
 				return resp.json(); // Partial<OpenWeatherResponse>
@@ -85,9 +85,8 @@ const ssrHandler: RequestHandler = async (req, res, next) => {
 			const current = await currResp.json();
 
 			// 2) Fetch comparison for popular cities
-			const popular = ["Warszawa", "Kraków", "Gdańsk", "Wrocław"];
 			const comparison = await Promise.all(
-				popular.map(async (c) => {
+				popularCities.map(async (c) => {
 					const resp = await fetch(buildWeatherUrl(c));
 					if (!resp.ok) throw new Error(`Error fetching ${c}`);
 					return resp.json();

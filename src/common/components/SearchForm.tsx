@@ -51,7 +51,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 			</div>
 			<Button
 				type="submit"
-				className="whitespace-nowrap bg-indigo-900 hover:cursor-pointer"
+				className="whitespace-nowrap bg-indigo-900 hover:cursor-pointer hover:bg-indigo-700"
 			>
 				Szukaj
 			</Button>

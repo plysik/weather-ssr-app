@@ -11,12 +11,12 @@ import HomePage from "./pages/HomePage";
 const App: React.FC = () => {
 	const navigate = useNavigate();
 	return (
-		<div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-100 via-white to-blue-50">
+		<div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-100 via-white to-emerald-50">
 			<header className="bg-white shadow-sm">
 				<Container className="flex items-center justify-between py-4 min-h-16">
 					<Link
 						to="/"
-						className="text-2xl font-bold text-indigo-600 hover:text-indigo-800"
+						className="text-2xl font-bold text-indigo-900 hover:text-indigo-700"
 					>
 						Pogodynka
 					</Link>

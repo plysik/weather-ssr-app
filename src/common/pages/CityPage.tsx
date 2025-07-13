@@ -52,7 +52,7 @@ const CityPage: React.FC = () => {
 
 	return (
 		<div className="space-y-8 p-4">
-			<Card className="max-w-4xl mx-auto">
+			<Card className="max-w-5xl mx-auto">
 				<CardHeader>
 					<h2 className="text-2xl font-semibold mt-2">
 						Pogoda w {current.name}

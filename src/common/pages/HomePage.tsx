@@ -4,9 +4,8 @@ import { MapPin } from "lucide-react";
 // biome-ignore lint/style/useImportType: <explanation>
 import React from "react";
 import { Link } from "react-router-dom";
+import { popularCities } from "@/shared/data";
 import SearchForm from "../components/SearchForm";
-
-const popularCities = ["Warszawa", "Kraków", "Gdańsk", "Wrocław"];
 
 const HomePage: React.FC = () => {
 	return (
